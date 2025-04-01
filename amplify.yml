@@ -11,9 +11,13 @@ frontend:
         - npm install
         - npm update
         - npm audit fix --force
+        - touch amplify_outputs.json || echo '{}' > amplify_outputs.json
     build:
       commands:
         - npm run build
+    test:
+      commands:
+        - npm test
   artifacts:
     baseDirectory: dist
     files:
