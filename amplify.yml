@@ -11,13 +11,46 @@ frontend:
         - npm install
         - npm update
         - npm audit fix --force
-        - touch amplify_outputs.json || echo '{}' > amplify_outputs.json
+        - echo '{}' > amplify_outputs.json
     build:
       commands:
         - npm run build
     test:
       commands:
         - npm test
+  artifacts:
+    baseDirectory: dist
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**
+version: 1
+backend:
+  phases:
+    build:
+      commands:
+        - echo "build start"
+        - echo "No backend build needed"
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - echo "build start"
+        - npm install
+        - npm update
+        - npm audit fix --force
+        - echo '{}' > amplify_outputs.json
+    build:
+      commands:
+        - echo "build start"
+        - npm run build
+        - echo "build completed"
+    test:
+      commands:
+        - echo "build start"
+        - npm test
+        - echo "build completed"
   artifacts:
     baseDirectory: dist
     files:
