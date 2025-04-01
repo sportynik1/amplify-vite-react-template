@@ -3,27 +3,27 @@ backend:
   phases:
     build:
       commands:
-        - echo "build start"
         - echo "No backend build needed"
 frontend:
   phases:
     preBuild:
       commands:
-        - echo "build start"
+        - echo "Pre-build start"
         - npm install
         - npm update
         - npm audit fix --force
-        - echo '{}' > amplify_outputs.json
+        - touch amplify_outputs.json || echo '{}' > amplify_outputs.json
     build:
       commands:
-        - echo "build start"
+        - echo "Build start"
         - npm run build
-        - echo "build completed"
+        - echo "Build completed"
     test:
       commands:
-        - echo "build start"
-        - npm test
-        - echo "build completed"
+        - echo "Test start"
+        # Run Jest tests located in src/__tests__/
+        - npm run test -- --coverage --verbose --testPathPattern="src/__tests__/.*\.test\.tsx$"
+        - echo "Test completed"
   artifacts:
     baseDirectory: dist
     files:
