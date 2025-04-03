@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom'; // Add this import at the top
+import '@testing-library/jest-dom'; // This provides the custom matchers
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from '../App';
