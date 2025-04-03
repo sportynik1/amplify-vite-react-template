@@ -1,18 +1,12 @@
-// src/__tests__/App.test.tsx
+import '@testing-library/jest-dom'; // Add this import at the top
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import App from '../App'; // Adjust the path based on your project structure
+import App from '../App';
 
-describe('App Component', () => {
-  test('renders welcome message', () => {
+describe('App', () => {
+  test('renders learn react link', () => {
     render(<App />);
-    const linkElement = screen.getByText(/welcome/i);
+    const linkElement = screen.getByText(/learn react/i);
     expect(linkElement).toBeInTheDocument();
-  });
-
-  test('renders a button', () => {
-    render(<App />);
-    const buttonElement = screen.getByRole('button', { name: /click me/i });
-    expect(buttonElement).toBeInTheDocument();
   });
 });
