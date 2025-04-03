@@ -9,6 +9,8 @@ frontend:
     preBuild:
       commands:
         - echo "Pre-build start"
+        # Install required testing dependencies first
+        - npm install --save-dev @testing-library/react @types/jest @types/node jest
         - npm install
         - npm update
         - npm audit fix --force
@@ -30,4 +32,4 @@ frontend:
       - '**/*'
   cache:
     paths:
-      - node_modules/**
+      - node_modules/**/*
